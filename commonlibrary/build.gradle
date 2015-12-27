@@ -45,4 +45,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'im.amomo.volley:okvolley:1.1.8'
     compile project(':library4zcp')
+    compile 'com.android.support:support-annotations:23.1.1'
 }

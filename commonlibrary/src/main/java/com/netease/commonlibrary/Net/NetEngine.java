@@ -1,7 +1,9 @@
 package com.netease.commonlibrary.Net;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Build;
+import android.provider.MediaStore;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -43,6 +45,7 @@ public class NetEngine {
             this.networkManagerStack = null;
             this.gson=null;
             this.context = context;
+
         }
 
 

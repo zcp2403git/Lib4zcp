@@ -1,6 +1,9 @@
 package com.netease.commonlibrary.Utils.Log;
 
 
+import android.database.Cursor;
+import android.provider.MediaStore;
+
 import com.netease.commonlibrary.Constant.LibraryConstant;
 
 import java.io.BufferedWriter;
