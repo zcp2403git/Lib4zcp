@@ -1,9 +1,15 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+// This is the library version used when deploying the artifact
+group = "com.zhouchangping.library4zcp" // Maven Group ID for the artifact
+def siteUrl = 'https://github.com/zcp2403git/Lib4zcp' // 项目的主页
+def gitUrl = 'https://github.com/zcp2403git/Lib4zcp.git' // Git仓库的url
 
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
+    resourcePrefix "bounceprogressbar__"    //这个随便填
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 23
@@ -16,13 +22,112 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        // if true, stop the gradle build if errors are found
+        abortOnError false
+        // if true, only report errors
+        disable 'TypographyFractions', 'TypographyQuotes'
+        // if true, don't include source code lines in the error output
+        noLines true
+        // if true, generate an XML report for use by for example Jenkins
+        xmlReport true
+        // if true, generate an HTML report (with issue explanations, sourcecode, etc)
+        htmlReport true
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    dexOptions {
+        preDexLibraries = false
+        jumboMode = true
+        javaMaxHeapSize "2g"
+    }
 }
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                // Add your description here
+                name 'test by zhouchangping ' //项目描述
+                url siteUrl
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'zhouchangping'    //填写的一些基本信息
+                        name 'zhouchangping'
+                        email 'zcp2403@163.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "zcp4lib"    //发布到JCenter上的项目名字
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.alipay.euler:andfix:0.3.1@aar'
-    //    compile 'im.amomo.volley:okvolley:1.1.8'
+    //    compile 'im.amomo.volley:okvolley:1.1.9'
     compile 'de.greenrobot:eventbus:3.0.0-beta1'
 }
