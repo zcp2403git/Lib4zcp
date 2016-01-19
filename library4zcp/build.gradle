@@ -3,13 +3,13 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 // This is the library version used when deploying the artifact
 group = "com.zhouchangping.library4zcp" // Maven Group ID for the artifact
-def siteUrl = 'https://github.com/zcp2403git/Lib4zcp' // ÏîÄ¿µÄÖ÷Ò³
-def gitUrl = 'https://github.com/zcp2403git/Lib4zcp.git' // Git²Ö¿âµÄurl
+def siteUrl = 'https://github.com/zcp2403git/Lib4zcp' // ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½Ò³
+def gitUrl = 'https://github.com/zcp2403git/Lib4zcp.git' // Gitï¿½Ö¿ï¿½ï¿½url
 
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-    resourcePrefix "bounceprogressbar__"    //Õâ¸öËæ±ãÌî
+    resourcePrefix "bounceprogressbar__"    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 23
@@ -53,7 +53,7 @@ install {
             project {
                 packaging 'aar'
                 // Add your description here
-                name 'test by zhouchangping ' //ÏîÄ¿ÃèÊö
+                name 'test by zhouchangping ' //ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½
                 url siteUrl
                 licenses {
                     license {
@@ -63,7 +63,7 @@ install {
                 }
                 developers {
                     developer {
-                        id 'zhouchangping'    //ÌîÐ´µÄÒ»Ð©»ù±¾ÐÅÏ¢
+                        id 'zhouchangping'    //ï¿½ï¿½Ð´ï¿½ï¿½Ò»Ð©ï¿½ï¿½ï¿½ï¿½Ï¢
                         name 'zhouchangping'
                         email 'zcp2403@163.com'
                     }
@@ -102,7 +102,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "zcp4lib"    //·¢²¼µ½JCenterÉÏµÄÏîÄ¿Ãû×Ö
+        name = "zcp4lib"    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½JCenterï¿½Ïµï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
@@ -130,4 +130,5 @@ dependencies {
     compile 'com.alipay.euler:andfix:0.3.1@aar'
     //    compile 'im.amomo.volley:okvolley:1.1.9'
     compile 'de.greenrobot:eventbus:3.0.0-beta1'
+    provided 'de.greenrobot:eventbus-annotation-processor:3.0.0-beta1'
 }
