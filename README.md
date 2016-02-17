@@ -7,6 +7,6 @@
 加入andfix和反射工具类
 
 ## 2016.2.16
-加入leakCanary和blockCanary，性能分析工具类
-
+- 加入leakCanary和blockCanary，性能分析工具类
+- 加入个别自定义View
 
