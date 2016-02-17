@@ -1,0 +1,26 @@
+<resources>
+
+    <declare-styleable name="HintIconView">
+        <attr name="edit_imagewidth" format="dimension|reference" />
+        <attr name="edit_imageheight" format="dimension|reference" />
+        <attr name="edit_textColor" format="color" />
+        <attr name="edit_textSize" format="dimension|reference" />
+        <attr name="hint_text" format="string" />
+        <attr name="hint_drawable" format="integer|reference" />
+    </declare-styleable>
+
+        <declare-styleable name="Lock9View">
+            <attr format="color|reference" name="lock9_nodeSrc"/>
+            <attr format="color|reference" name="lock9_nodeOnSrc"/>
+            <attr format="dimension" name="lock9_nodeSize"/>
+            <attr format="dimension" name="lock9_nodeAreaExpand"/>
+            <attr format="reference" name="lock9_nodeOnAnim"/>
+            <attr format="color" name="lock9_lineColor"/>
+            <attr format="dimension" name="lock9_lineWidth"/>
+            <attr format="dimension" name="lock9_padding"/>
+            <attr format="dimension" name="lock9_spacing"/>
+            <attr format="boolean" name="lock9_enableVibrate"/>
+            <attr format="integer" name="lock9_vibrateTime"/>
+        </declare-styleable>
+
+</resources>
